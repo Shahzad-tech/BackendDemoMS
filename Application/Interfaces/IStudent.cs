@@ -14,6 +14,7 @@ namespace Application.Interfaces
         Students GetStudentById(int id);
         GetStudentDto GetDtoStudentById(int id);
         bool SaveChanges();
-
+        GetStudentDto GetStudentDataByIdentityId(string id);
+       
     }
 }

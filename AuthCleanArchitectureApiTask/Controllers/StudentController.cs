@@ -13,48 +13,56 @@ namespace WebUI.Controllers
     public class StudentController : Controller
     {
 
-     
-        private readonly IStudent _iusers;
+
+        private readonly IStudent _istudents;
         public StudentController(IStudent iusers) {
-            _iusers = iusers;     
+            _istudents = iusers;
         }
-       
- 
+
+
         [Authorize(Roles = "Admin")]
         [HttpPost("Register")]
         public async Task<ActionResult> RegisterStudent(AddStudentFromFrontendDto studentmodelfromfrontend)
         {
-            var result = await _iusers.RegisterStudent(studentmodelfromfrontend); 
+            var result = await _istudents.RegisterStudent(studentmodelfromfrontend);
             return Ok(result);
-       
+
         }
 
-       
+
 
         [Authorize(Roles = "Admin")]
         [HttpPost("GetStudents")]
         public ActionResult GetAllStudents(StudentSortConfigDto studentSortConfig) {
-           
-            var result = _iusers.GetAllStudents(studentSortConfig);
+
+            var result = _istudents.GetAllStudents(studentSortConfig);
             return Ok(result);
-        
+
         }
 
-      
 
-        [Authorize(Roles = "Admin")]
+
+        [Authorize(Roles = "Admin,Student")]
         [HttpPut("UpdateStudent/{id}")]
         public ActionResult UpdateStudent(int id, UpdateStudentDto updateStudentModel) {
 
-            var response  = _iusers.UpdateStudent(id, updateStudentModel);
+            var response = _istudents.UpdateStudent(id, updateStudentModel);
             return Ok(response);
-        
+
         }
         [HttpGet("{id}")]
         public ActionResult GetStudentById(int id) {
 
-            var response = _iusers.GetDtoStudentById(id);
+            var response = _istudents.GetDtoStudentById(id);
             return Ok(response);
+        }
+
+        [HttpGet("GetStudentByIdentity/{id}")]
+        public ActionResult GetStudentDataByIdentityId(string id) {
+
+            var response = _istudents.GetStudentDataByIdentityId(id);
+            return Ok(response);
+        
         }
 
     }

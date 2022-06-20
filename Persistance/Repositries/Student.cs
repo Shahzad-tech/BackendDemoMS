@@ -85,5 +85,12 @@ namespace Persistance.Repositries
             var model = this.GetStudentById(id);
             return _mapper.Map<GetStudentDto>(model);
         }
+
+        public GetStudentDto GetStudentDataByIdentityId(string id)
+        {
+            var model =  _context.Students.FirstOrDefault(x => x.UserId == id);
+            return _mapper.Map<GetStudentDto>(model);
+           
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace WebUI.Controllers
         }
 
         
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Student")]
         [HttpGet("GetProgram")]
         public ActionResult GetPrograms()
         {
