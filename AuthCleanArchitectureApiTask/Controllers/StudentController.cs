@@ -15,8 +15,8 @@ namespace WebUI.Controllers
 
 
         private readonly IStudent _istudents;
-        public StudentController(IStudent iusers) {
-            _istudents = iusers;
+        public StudentController(IStudent istudents) {
+            _istudents = istudents;
         }
 
 
