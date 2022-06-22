@@ -26,6 +26,7 @@ namespace Persistance.Extensions
             services.AddScoped<IAccount, Account>();
             services.AddScoped<IProgram, Program>();
             services.AddScoped<IRole, Role>();
+            services.AddScoped<ITeacher, Teacher>();
          
         }
 
